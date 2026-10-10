@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jiyoung Kim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#FFFFFF; --ink:#1C1E21; --soft:#565B63; --faint:#8A8F97;
+  --rule:#E8E8E5; --link:#1C5D99; --chip:#F4F4F1;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#16181C; --ink:#E6E7E4; --soft:#9AA0A8; --faint:#6B7079;
+    --rule:#2A2D33; --link:#7FB2DD; --chip:#1E2127;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#16181C; --ink:#E6E7E4; --soft:#9AA0A8; --faint:#6B7079;
+  --rule:#2A2D33; --link:#7FB2DD; --chip:#1E2127;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{font-size:15px;scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:.875rem;line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--link);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:2px}
+.wrap{max-width:46rem;margin:0 auto;padding:3.5rem 1.5rem 5rem}
+
+/* intro — photo floats, text wraps */
+.intro{margin-bottom:2.4rem}
+.intro::after{content:"";display:block;clear:both}
+.photo{
+  float:right;width:158px;height:158px;border-radius:50%;
+  object-fit:cover;margin:.2rem 0 1rem 1.6rem;filter:saturate(.96);
+  shape-outside:circle(50%);
+}
+h1{
+  font-family:Newsreader,Georgia,serif;font-weight:500;
+  font-size:1.75rem;line-height:1.2;margin:0 0 .45rem;letter-spacing:-.012em;
+}
+h1 .kr{font-family:Inter,sans-serif;font-size:.98rem;color:var(--faint);font-weight:400}
+.links{display:flex;flex-wrap:wrap;gap:.85rem;font-size:.8rem;margin-bottom:1.1rem}
+.links a{color:var(--soft)}
+.links a:hover{color:var(--link)}
+
+p{margin:0 0 .85rem}
+.bio p:last-child{margin-bottom:0}
+
+h2{
+  font-family:Newsreader,Georgia,serif;font-weight:600;
+  font-size:1.0rem;letter-spacing:.01em;
+  margin:2.6rem 0 .9rem;padding-bottom:.4rem;border-bottom:1px solid var(--rule);
+}
+
+/* timeline rows */
+.row{display:grid;grid-template-columns:8.5rem 1fr;gap:.2rem 1.4rem;margin-bottom:1.15rem}
+.when{color:var(--faint);font-size:.775rem;padding-top:.12rem;font-variant-numeric:tabular-nums}
+.what{min-width:0}
+.what .ttl{font-weight:600;font-size:.875rem}
+.what .sub{color:var(--soft);font-size:.82rem}
+.what .note{color:var(--faint);font-size:.8rem;margin-top:.15rem}
+
+/* experience */
+.exp{margin-bottom:1.3rem}
+.eh{display:flex;align-items:baseline;gap:.5rem;font-size:.875rem;line-height:1.5}
+.eh b{font-weight:600}
+.logo{
+  flex:0 0 1.05rem;width:1.05rem;height:1.05rem;border-radius:3px;
+  display:inline-flex;align-items:center;justify-content:center;
+  font-size:.66rem;font-weight:700;color:#fff;align-self:center;
+  letter-spacing:-.02em;
+}
+.lk{background:#FEE500;color:#191919}
+.lka{background:#004191;color:#fff;font-size:.6rem}
+.lku{background:#8C1739;color:#fff;font-size:.55rem}
+.em{color:var(--soft);font-size:.82rem;margin-top:.15rem;padding-left:1.55rem}
+.em a{color:var(--soft);text-decoration:underline;text-underline-offset:2px}
+
+/* publications */
+ol.pubs{list-style:none;counter-reset:p;margin:0;padding:0}
+ol.pubs li{
+  counter-increment:p;display:grid;grid-template-columns:9.5rem 1fr;
+  gap:0 1.1rem;margin-bottom:1.5rem;align-items:start;
+}
+.thumb{
+  width:9.5rem;aspect-ratio:16/10;border-radius:4px;overflow:hidden;
+  background:var(--chip);border:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:center;
+}
+.thumb img,.thumb video{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block}
+.thumb .ph{font-size:.65rem;color:var(--faint);letter-spacing:.04em}
+.pbody{min-width:0}
+.pt{font-weight:600;font-size:.875rem;line-height:1.45}
+.pa{color:var(--soft);font-size:.8rem;margin-top:.1rem}
+.pa b{font-weight:600;color:var(--ink)}
+.pv{font-size:.8rem;margin-top:.1rem}
+.pv em{font-style:italic;color:var(--soft)}
+.pv b{font-weight:600;color:var(--ink)}
+.badge{
+  display:inline-block;font-size:.7rem;padding:.02rem .36rem;border-radius:3px;
+  background:var(--chip);color:var(--soft);margin-left:.3rem;vertical-align:1px;
+}
+.plinks{margin-top:.22rem;display:flex;gap:.6rem;font-size:.765rem}
+
+.hon{display:grid;grid-template-columns:8.5rem 1fr;gap:.2rem 1.4rem;margin-bottom:.55rem}
+.hon .t{font-size:.845rem}
+.hsub{color:var(--faint);font-size:.8rem;margin-top:.1rem}
+
+footer{
+  margin-top:3.5rem;padding-top:1.1rem;border-top:1px solid var(--rule);
+  color:var(--faint);font-size:.75rem;
+}
+
+#tt{
+  position:fixed;top:1rem;right:1rem;z-index:5;
+  background:none;border:1px solid var(--rule);color:var(--soft);
+  width:2rem;height:2rem;border-radius:50%;cursor:pointer;font-size:.8rem;
+  display:flex;align-items:center;justify-content:center;
+}
+#tt:hover{color:var(--ink);border-color:var(--soft)}
+
+@media (max-width:620px){
+  .photo{float:none;display:block;width:124px;height:124px;margin:0 0 1rem 0}
+  .row,.hon{grid-template-columns:1fr;gap:.1rem}
+  .when{padding-top:0;margin-bottom:.1rem}
+  ol.pubs li{grid-template-columns:1fr;gap:.5rem}
+  .thumb{width:100%;max-width:14rem;aspect-ratio:16/9}
+}
+</style>
+</head>
+<body>
+<button id="tt" aria-label="Toggle theme">◐</button>
+<div class="wrap">
+
+<div class="intro">
+  <img class="photo" src="assets/profile.jpg" alt="Jiyoung Kim">
+  <h1>Jiyoung Kim <span class="kr">(김지영)</span></h1>
+  <div class="links">
+    <a href="mailto:kplove01@kaist.ac.kr">Email</a>
+    <a href="https://scholar.google.com/citations?user=DqG-ybIAAAAJ">Google Scholar</a>
+    <a href="https://www.linkedin.com/in/jiyoung-kim-347a621b2/">LinkedIn</a>
+    <a href="#">CV</a>
+  </div>
+
+  <p>I am an integrated M.S./Ph.D. student at <a href="https://www.kaist.ac.kr/en/">KAIST</a>, in the <a href="https://gsai.kaist.ac.kr/?lang=en">Kim Jaechul Graduate School of AI</a>. I am a member of <a href="https://cvlab.kaist.ac.kr">CVLAB</a>, advised by Prof. <a href="https://cvlab.kaist.ac.kr">Seungryong Kim</a> (2025&ndash;present). I received my B.S. in Computer Science and Engineering from <a href="https://www.korea.ac.kr/">Korea University</a> in 2025. Currently, I am a Research Intern at <a href="https://www.kakaocorp.com">Kakao Corp.</a>, where I work with the Visual Content Generative AI team.</p>
+
+  <p>My research focuses on visual generation across images and video, along two threads. On the <b>representation</b> side, I study the internal representations of diffusion transformers &mdash; how correspondence emerges inside them, and how dense alignment can be used to guide generation. More recently, on the <b>efficiency</b> side, I study how that understanding can guide more efficient generation.</p>
+
+
+  <p>Email: <a href="mailto:kplove01@kaist.ac.kr">kplove01@kaist.ac.kr</a>, <a href="mailto:kplove0503@gmail.com">kplove0503@gmail.com</a></p>
+</div>
+
+<h2>Education</h2>
+<div class="exp">
+  <div class="eh">
+    <span class="logo lka">K</span>
+    <span><b>Integrated M.S./Ph.D. in Artificial Intelligence</b> &middot; <a href="https://gsai.kaist.ac.kr/?lang=en">Kim Jaechul Graduate School of AI</a>, <a href="https://www.kaist.ac.kr/en/">KAIST</a> &middot; Seoul, Korea (2025.03 &ndash; Present)</span>
+  </div>
+  <div class="em">Advisor: Prof. <a href="https://cvlab.kaist.ac.kr">Seungryong Kim</a></div>
+</div>
+<div class="exp">
+  <div class="eh">
+    <span class="logo lku">KU</span>
+    <span><b>B.S. in Computer Science and Engineering</b> &middot; <a href="https://www.korea.ac.kr/">Korea University</a> &middot; Seoul, Korea (2020.03 &ndash; 2025.02)</span>
+  </div>
+</div>
+
+<h2>Experience</h2>
+<div class="exp">
+  <div class="eh">
+    <span class="logo lk">K</span>
+    <span><b>Research Intern at Kakao Corp.</b> &middot; Visual Content Generative AI team &middot; Seoul, Korea (2026.03 &ndash; 2026.12)</span>
+  </div>
+  <div class="em">Project: Generation-aware Latent Compression for Efficient Video Generation</div>
+</div>
+
+<h2>Publications</h2>
+<ol class="pubs">
+
+<li>
+  <div class="thumb"><video autoplay loop muted playsinline preload="metadata"><source src="assets/grace.mp4" type="video/mp4"></video></div>
+  <div class="pbody">
+  <div class="pt">GRACE: Generation-aware Latent Compression for Efficient Video Generation</div>
+  <div class="pa"><b>Jiyoung Kim</b>, Paul Hyunbin Cho, Jisu Nam, Donghoon Lee, Hyunsung Go, Yeonkyeong Lee, Hansaem Kim, Seungryong Kim</div>
+  <div class="pv"><em>arXiv preprint</em>, 2026 <span class="badge">under review</span></div>
+  <div class="plinks">
+    <a href="https://arxiv.org/abs/2610.10524">arXiv</a>
+    <a href="https://cvlab-kaist.github.io/GRACE/">Project page</a>
+  </div>
+  </div>
+</li>
+
+<li>
+  <div class="thumb"><img src="assets/coral.jpg" alt=""></div>
+  <div class="pbody">
+  <div class="pt">CORAL: Correspondence Alignment For Improved Virtual Try-On</div>
+  <div class="pa"><b>Jiyoung Kim</b>, Youngjin Shin, Siyoon Jin, Dahyun Chung, Jisu Nam, Tongmin Kim, Jongjae Park, Hyeonwoo Kang, Seungryong Kim</div>
+  <div class="pv"><em>Neural Information Processing Systems</em> (<b>NeurIPS</b>), 2026</div>
+  <div class="plinks">
+    <a href="https://arxiv.org/abs/2602.17636">arXiv</a>
+    <a href="https://cvlab-kaist.github.io/CORAL/">Project page</a>
+  </div>
+  </div>
+</li>
+
+<li>
+  <div class="thumb"><video autoplay loop muted playsinline preload="metadata"><source src="assets/worldcam.mp4" type="video/mp4"></video></div>
+  <div class="pbody">
+  <div class="pt">WorldCam: Interactive Autoregressive 3D Gaming Worlds with Camera Pose as a Unifying Geometric Representation</div>
+  <div class="pa">Jisu Nam, Yicong Hong, Chun-Hao Paul Huang, Feng Liu, JoungBin Lee, <b>Jiyoung Kim</b>, Siyoon Jin, Yunsung Lee, Jaeyoon Jung, Suhwan Choi, Seungryong Kim, Yang Zhou</div>
+  <div class="pv"><em>CVPR Workshop on Video World Model</em> (<b>CVPRW</b>), 2026</div>
+  <div class="plinks">
+    <a href="https://arxiv.org/abs/2603.16871">arXiv</a>
+    <a href="https://cvlab-kaist.github.io/WorldCam/">Project page</a>
+  </div>
+  </div>
+</li>
+
+<li>
+  <div class="thumb"><video autoplay loop muted playsinline preload="metadata"><source src="assets/matrix.mp4" type="video/mp4"></video></div>
+  <div class="pbody">
+  <div class="pt">MATRIX: Mask Track Alignment for Interaction-Aware Video Generation</div>
+  <div class="pa">Siyoon Jin, Seongchan Kim, Dahyun Chung, Jaeho Lee, Hyunwook Choi, Jisu Nam, <b>Jiyoung Kim</b>, Seungryong Kim</div>
+  <div class="pv"><em>International Conference on Learning Representations</em> (<b>ICLR</b>), 2026</div>
+  <div class="plinks">
+    <a href="https://arxiv.org/abs/2510.07310">arXiv</a>
+    <a href="https://cvlab-kaist.github.io/MATRIX/">Project page</a>
+  </div>
+  </div>
+</li>
+
+<li>
+  <div class="thumb"><video autoplay loop muted playsinline preload="metadata"><source src="assets/difftrack.mp4" type="video/mp4"></video></div>
+  <div class="pbody">
+  <div class="pt">Emergent Temporal Correspondences from Video Diffusion Transformers</div>
+  <div class="pa">Jisu Nam*, Soowon Son*, Dahyun Chung, <b>Jiyoung Kim</b>, Siyoon Jin, Junhwa Hur, Seungryong Kim</div>
+  <div class="pv"><em>Neural Information Processing Systems</em> (<b>NeurIPS</b>), 2025</div>
+  <div class="plinks">
+    <a href="https://arxiv.org/abs/2506.17220">arXiv</a>
+    <a href="https://cvlab-kaist.github.io/DiffTrack/">Project page</a>
+  </div>
+  </div>
+</li>
+
+<li>
+  <div class="thumb"><img src="assets/amadapter.jpg" alt=""></div>
+  <div class="pbody">
+  <div class="pt">Appearance Matching Adapter for Exemplar-based Semantic Image Synthesis</div>
+  <div class="pa">Siyoon Jin, Jisu Nam, <b>Jiyoung Kim</b>, Dahyun Chung, Yeong-Seok Kim, Joonhyung Park, HeonJeong Chu, Seungryong Kim</div>
+  <div class="pv"><em>International Conference on Computer Vision</em> (<b>ICCV</b>), 2025</div>
+  <div class="plinks">
+    <a href="https://arxiv.org/abs/2412.03150">arXiv</a>
+    <a href="https://cvlab-kaist.github.io/AM-Adapter/">Project page</a>
+  </div>
+  </div>
+</li>
+
+<li>
+  <div class="thumb"><img src="assets/kda.jpg" alt=""></div>
+  <div class="pbody">
+  <div class="pt">K/DA: Automated Data Generation Pipeline for Detoxifying Implicitly Offensive Language in Korean</div>
+  <div class="pa">Minkyeong Jeon*, Hyemin Jeong*, Yerang Kim, <b>Jiyoung Kim</b>, Jae Hyeon Cho, Byung-Jun Lee</div>
+  <div class="pv"><em>Association for Computational Linguistics</em> (<b>ACL</b>), 2025</div>
+  <div class="plinks">
+    <a href="https://arxiv.org/abs/2506.13513">arXiv</a>
+    <a href="https://minkyeongjeon.github.io/kda_projectpage/">Project page</a>
+  </div>
+  </div>
+</li>
+
+<li>
+  <div class="thumb"><video autoplay loop muted playsinline preload="metadata"><source src="assets/moditalker.mp4" type="video/mp4"></video></div>
+  <div class="pbody">
+  <div class="pt">MoDiTalker: Motion-Disentangled Diffusion Model for High-Fidelity Talking Head Generation</div>
+  <div class="pa">Seyeon Kim*, Siyoon Jin*, Jihye Park*, Kihong Kim, <b>Jiyoung Kim</b>, Jisu Nam, Seungryong Kim</div>
+  <div class="pv"><em>AAAI Conference on Artificial Intelligence</em> (<b>AAAI</b>), 2025</div>
+  <div class="plinks">
+    <a href="https://arxiv.org/abs/2403.19144">arXiv</a>
+    <a href="https://ku-cvlab.github.io/MoDiTalker/">Project page</a>
+  </div>
+  </div>
+</li>
+
+</ol>
+
+<h2>Honors &amp; Awards</h2>
+<div class="hon">
+  <div class="when">2024</div>
+  <div class="t">Program Completion, Samsung SDS Undergraduate Algorithm Camp</div>
+</div>
+<div class="hon">
+  <div class="when">2021</div>
+  <div class="t">Bronze Award, KIBWA ICT Mentoring Contest, Korea IT Business Women&rsquo;s Association<div class="hsub">Project: Deepfake Detection</div></div>
+</div>
+
+<footer>
+  &copy; 2026 Jiyoung Kim &middot; Last updated October 2026
+</footer>
+
+</div>
+<script>
+const t=document.getElementById("tt");
+const KEY="theme";
+try{const s=localStorage.getItem(KEY); if(s)document.documentElement.setAttribute("data-theme",s);}catch(e){}
+t.addEventListener("click",()=>{
+  const cur=document.documentElement.getAttribute("data-theme");
+  const sysDark=window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const next=cur? (cur==="dark"?"light":"dark") : (sysDark?"light":"dark");
+  document.documentElement.setAttribute("data-theme",next);
+  try{localStorage.setItem(KEY,next);}catch(e){}
+});
+</script>
+</body>
+</html>
