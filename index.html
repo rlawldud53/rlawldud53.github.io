@@ -124,13 +124,19 @@ footer{
 
 /* abstract hover */
 .abswrap{position:relative;display:inline-block}
+.abswrap::after{
+  content:"";position:absolute;left:0;top:100%;width:10rem;height:.6rem;
+  opacity:0;pointer-events:none;
+}
+.abswrap:hover::after{opacity:1;pointer-events:auto}
 .absbtn{
   color:var(--link);cursor:default;
 }
 .abswrap:hover .absbtn{text-decoration:underline;text-underline-offset:2px}
 .abspop{
-  position:absolute;left:0;top:calc(100% + .45rem);z-index:20;
-  width:min(34rem,78vw);max-height:19rem;overflow-y:auto;
+  position:absolute;left:0;top:100%;z-index:20;
+  width:min(52rem,92vw);max-height:none;overflow:visible;
+  margin-top:.45rem;
   background:var(--bg);color:var(--ink);border:1px solid var(--rule);
   border-radius:5px;padding:.8rem .9rem;font-size:.82rem;line-height:1.58;
   box-shadow:0 6px 22px rgba(0,0,0,.14);
@@ -140,7 +146,7 @@ footer{
 }
 .abswrap:hover .abspop,.abswrap:focus-within .abspop{opacity:1;visibility:visible;transform:translateY(0)}
 @media (prefers-reduced-motion: reduce){.abspop{transition:none}}
-@media (max-width:620px){.abspop{width:min(22rem,86vw);max-height:15rem}}
+@media (max-width:620px){.abspop{width:min(22rem,88vw);max-height:20rem;overflow-y:auto}}
 
 #tt{
   position:fixed;top:1rem;right:1rem;z-index:5;
