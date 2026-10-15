@@ -13,17 +13,17 @@
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
   --bg:#FFFFFF; --ink:#1C1E21; --soft:#565B63; --faint:#8A8F97;
-  --rule:#E8E8E5; --link:#1C5D99; --chip:#F4F4F1;
+  --rule:#E8E8E5; --link:#1C5D99; --chip:#F4F4F1;--aff:#7A6A52;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#16181C; --ink:#E6E7E4; --soft:#9AA0A8; --faint:#6B7079;
-    --rule:#2A2D33; --link:#7FB2DD; --chip:#1E2127;
+    --rule:#2A2D33; --link:#7FB2DD; --chip:#1E2127;--aff:#A99579;
   }
 }
 :root[data-theme="dark"]{
   --bg:#16181C; --ink:#E6E7E4; --soft:#9AA0A8; --faint:#6B7079;
-  --rule:#2A2D33; --link:#7FB2DD; --chip:#1E2127;
+  --rule:#2A2D33; --link:#7FB2DD; --chip:#1E2127;--aff:#A99579;
 }
 *,*::before,*::after{box-sizing:inherit}
 html{font-size:16px;scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
@@ -113,8 +113,13 @@ ol.pubs li{
 .pt{font-weight:700;font-size:1.02rem;line-height:1.4;letter-spacing:-.008em;color:var(--ink)}
 .pa{color:var(--soft);font-size:.845rem;margin-top:.3rem;line-height:1.5}
 .pa b{font-weight:600;color:var(--ink)}
-.paf{color:var(--faint);font-size:.8rem;margin-top:.12rem}
-.pv{font-size:.845rem;margin-top:.22rem;color:var(--soft)}
+.paf{margin-top:.28rem;display:flex;flex-wrap:wrap;gap:.3rem}
+.affchip{
+  display:inline-block;font-size:.72rem;font-weight:500;letter-spacing:.01em;
+  padding:.12rem .45rem;border-radius:3px;line-height:1.35;
+  background:var(--chip);color:var(--soft);border:1px solid var(--rule);
+}
+.pv{font-size:.845rem;margin-top:1rem;color:var(--soft)}
 .pv em{font-style:italic;color:var(--soft)}
 .pv b{font-weight:600;color:var(--ink)}
 .badge{
@@ -254,7 +259,7 @@ footer{
   <div class="pbody">
   <div class="pt">GRACE: Generation-aware Latent Compression for Efficient Video Generation</div>
   <div class="pa"><b>Jiyoung Kim</b>, Paul Hyunbin Cho, Jisu Nam, Donghoon Lee, Hyunsung Go, Yeonkyeong Lee, Hansaem Kim, Seungryong Kim</div>
-  <div class="paf">KAIST &middot; Kakao Corp.</div>
+  <div class="paf"><span class="affchip">KAIST AI</span><span class="affchip">Kakao Corp.</span></div>
   <div class="pv"><span class="vbadge vb-soft">arXiv</span><em>preprint</em>, 2026 <span class="badge">under review</span></div>
   <div class="plinks">
     <span class="abswrap"><span class="absbtn" tabindex="0">Abstract</span><span class="abspop">Highly compressed video autoencoders offer an effective way to accelerate video diffusion models, as the Diffusion Transformer (DiT) operates on far fewer tokens. However, such autoencoders are challenging to train, since a higher compression ratio degrades reconstruction quality and recovering it requires more channels, which is known to slow the convergence of the DiT. The compressed latent also differs from the one the DiT was trained on, so the pretrained DiT must be either retrained from scratch or adapted at considerable cost. Compressing the autoencoder the DiT was trained with appears to preserve compatibility, yet optimizing it for reconstruction alone still shifts the latent away from the distribution the DiT has learned. To address this, we propose Generation-Aware Latent Compression for Efficient Video Generation (GRACE), a two-stage framework that compresses a pretrained video autoencoder while keeping it compatible with the pretrained DiT. Specifically, we keep a frozen base latent from the pretrained encoder and learn a residual latent for the information lost under stronger compression, while aligning the compressed latent with the pretrained latent in the feature space of the frozen DiT so that the autoencoder is optimized for generation. We then adapt the DiT with lightweight fine-tuning and asymmetric denoising, where the base is denoised ahead of the residual. GRACE reduces the token count of Wan2.1-I2V-14B by 8x and its latency by 11.1x at 480x832x81, while matching the generation quality of the pretrained pipeline before compression on VBench.</span></span>
@@ -270,7 +275,7 @@ footer{
   <div class="pbody">
   <div class="pt">CORAL: Correspondence Alignment For Improved Virtual Try-On</div>
   <div class="pa"><b>Jiyoung Kim</b>, Youngjin Shin, Siyoon Jin, Dahyun Chung, Jisu Nam, Tongmin Kim, Jongjae Park, Hyeonwoo Kang, Seungryong Kim</div>
-  <div class="paf">KAIST &middot; NC AI</div>
+  <div class="paf"><span class="affchip">KAIST AI</span><span class="affchip">NC AI</span></div>
   <div class="pv"><span class="vbadge vb-neurips">NeurIPS</span><em>Neural Information Processing Systems</em>, 2026</div>
   <div class="plinks">
     <span class="abswrap"><span class="absbtn" tabindex="0">Abstract</span><span class="abspop">Existing methods for Virtual Try-On (VTON) often struggle to preserve fine garment details, especially in unpaired settings where accurate person-garment correspondence is required. These methods do not explicitly enforce person-garment alignment and fail to explain how correspondence emerges within Diffusion Transformers (DiTs). In this paper, we first analyze full 3D attention in DiT-based architecture and reveal that the person-garment correspondence critically depends on precise person-garment query-key matching within the full 3D attention. Building on this insight, we then introduce CORrespondence ALignment (CORAL), a DiT-based framework that explicitly aligns query-key matching with robust external correspondences. CORAL integrates two complementary components: a correspondence distillation loss that aligns reliable matches with person-garment attention, and an entropy minimization loss that sharpens the attention distribution. We further propose a VLM-based evaluation protocol to better reflect human preference. CORAL consistently improves over the baseline, enhancing both global shape transfer and local detail preservation. Extensive ablations validate our design choices.</span></span>
@@ -286,7 +291,7 @@ footer{
   <div class="pbody">
   <div class="pt">WorldCam: Interactive Autoregressive 3D Gaming Worlds with Camera Pose as a Unifying Geometric Representation</div>
   <div class="pa">Jisu Nam, Yicong Hong, Chun-Hao Paul Huang, Feng Liu, JoungBin Lee, <b>Jiyoung Kim</b>, Siyoon Jin, Yunsung Lee, Jaeyoon Jung, Suhwan Choi, Seungryong Kim, Yang Zhou</div>
-  <div class="paf">KAIST &middot; Adobe Research &middot; MAUM AI</div>
+  <div class="paf"><span class="affchip">KAIST AI</span><span class="affchip">Adobe Research</span><span class="affchip">MAUM AI</span></div>
   <div class="pv"><span class="vbadge vb-cvpr">CVPRW</span><em>CVPR Workshop on Video World Model</em>, 2026</div>
   <div class="plinks">
     <span class="abswrap"><span class="absbtn" tabindex="0">Abstract</span><span class="abspop">Recent advances in video diffusion transformers have enabled interactive gaming world models that allow users to explore generated environments over extended horizons. However, existing approaches struggle with precise action control and long-horizon 3D consistency. Most prior works treat user actions as abstract conditioning signals, overlooking the fundamental geometric coupling between actions and the 3D world, whereby actions induce relative camera motions that accumulate into a global camera pose within a 3D world. In this paper, we establish camera pose as a unifying geometric representation to jointly ground immediate action control and long-term 3D consistency. First, we define a physics-based continuous action space and represent user inputs in the Lie algebra to derive precise 6-DoF camera poses, which are injected into the generative model via a camera embedder to ensure accurate action alignment. Second, we use global camera poses as spatial indices to retrieve relevant past observations, enabling geometrically consistent revisiting of locations during long-horizon navigation. To support this research, we introduce a large-scale dataset comprising 3,000 minutes of authentic human gameplay annotated with camera trajectories and textual descriptions. Extensive experiments show that our approach substantially outperforms state-of-the-art interactive gaming world models in action controllability, long-horizon visual quality, and 3D spatial consistency.</span></span>
@@ -302,7 +307,7 @@ footer{
   <div class="pbody">
   <div class="pt">MATRIX: Mask Track Alignment for Interaction-Aware Video Generation</div>
   <div class="pa">Siyoon Jin, Seongchan Kim, Dahyun Chung, Jaeho Lee, Hyunwook Choi, Jisu Nam, <b>Jiyoung Kim</b>, Seungryong Kim</div>
-  <div class="paf">KAIST</div>
+  <div class="paf"><span class="affchip">KAIST AI</span></div>
   <div class="pv"><span class="vbadge vb-iclr">ICLR</span><em>International Conference on Learning Representations</em>, 2026</div>
   <div class="plinks">
     <span class="abswrap"><span class="absbtn" tabindex="0">Abstract</span><span class="abspop">Video DiTs have advanced video generation, yet they still struggle to model multi-instance or subject-object interactions. This raises a key question: How do these models internally represent interactions? To answer this, we curate MATRIX-11K, a video dataset with interaction-aware captions and multi-instance mask tracks. Using this dataset, we conduct a systematic analysis that formalizes two perspectives of video DiTs: semantic grounding, via video-to-text attention, which evaluates whether noun and verb tokens capture instances and their relations; and semantic propagation, via video-to-video attention, which assesses whether instance bindings persist across frames. We find both effects concentrate in a small subset of interaction-dominant layers. Motivated by this, we introduce MATRIX, a simple and effective regularization that aligns attention in specific layers of video DiTs with multi-instance mask tracks from the MATRIX-11K dataset, enhancing both grounding and propagation. We further propose InterGenEval, an evaluation protocol for interaction-aware video generation. In experiments, MATRIX improves both interaction fidelity and semantic alignment while reducing drift and hallucination. Extensive ablations validate our design choices. Codes and weights will be released.</span></span>
@@ -318,7 +323,7 @@ footer{
   <div class="pbody">
   <div class="pt">Emergent Temporal Correspondences from Video Diffusion Transformers</div>
   <div class="pa">Jisu Nam*, Soowon Son*, Dahyun Chung, <b>Jiyoung Kim</b>, Siyoon Jin, Junhwa Hur, Seungryong Kim</div>
-  <div class="paf">KAIST &middot; Korea University &middot; Google DeepMind</div>
+  <div class="paf"><span class="affchip">KAIST AI</span><span class="affchip">Korea University</span><span class="affchip">Google DeepMind</span></div>
   <div class="pv"><span class="vbadge vb-neurips">NeurIPS</span><em>Neural Information Processing Systems</em>, 2025</div>
   <div class="plinks">
     <span class="abswrap"><span class="absbtn" tabindex="0">Abstract</span><span class="abspop">Recent advancements in video diffusion models based on Diffusion Transformers (DiTs) have achieved remarkable success in generating temporally coherent videos. Yet, a fundamental question persists: how do these models internally establish and represent temporal correspondences across frames? We introduce DiffTrack, the first quantitative analysis framework designed to answer this question. DiffTrack constructs a dataset of prompt-generated video with pseudo ground-truth tracking annotations and proposes novel evaluation metrics to systematically analyze how each component within the full 3D attention mechanism of DiTs (e.g., representations, layers, and timesteps) contributes to establishing temporal correspondences. Our analysis reveals that query-key similarities in specific, but not all, layers play a critical role in temporal matching, and that this matching becomes increasingly prominent during the denoising process. We demonstrate practical applications of DiffTrack in zero-shot point tracking, where it achieves state-of-the-art performance compared to existing vision foundation and self-supervised video models. Further, we extend our findings to motion-enhanced video generation with a novel guidance method that improves temporal consistency of generated videos without additional training. We believe our work offers crucial insights into the inner workings of video DiTs and establishes a foundation for further research and applications leveraging their temporal understanding.</span></span>
@@ -334,7 +339,7 @@ footer{
   <div class="pbody">
   <div class="pt">Appearance Matching Adapter for Exemplar-based Semantic Image Synthesis</div>
   <div class="pa">Siyoon Jin, Jisu Nam, <b>Jiyoung Kim</b>, Dahyun Chung, Yeong-Seok Kim, Joonhyung Park, HeonJeong Chu, Seungryong Kim</div>
-  <div class="paf">KAIST &middot; Korea University &middot; Hyundai Mobis</div>
+  <div class="paf"><span class="affchip">KAIST AI</span><span class="affchip">Korea University</span><span class="affchip">Hyundai Mobis</span></div>
   <div class="pv"><span class="vbadge vb-iccv">ICCV</span><em>International Conference on Computer Vision</em>, 2025</div>
   <div class="plinks">
     <span class="abswrap"><span class="absbtn" tabindex="0">Abstract</span><span class="abspop">Exemplar-based semantic image synthesis generates images aligned with semantic content while preserving the appearance of an exemplar. Conventional structure-guidance models like ControlNet, are limited as they rely solely on text prompts to control appearance and cannot utilize exemplar images as input. Recent tuning-free approaches address this by transferring local appearance via implicit cross-image matching in the augmented self-attention mechanism of pre-trained diffusion models. However, prior works are often restricted to single-object cases or foreground object appearance transfer, struggling with complex scenes involving multiple objects. To overcome this, we propose AM-Adapter (Appearance Matching Adapter) to address exemplar-based semantic image synthesis in-the-wild, enabling multi-object appearance transfer from a single scene-level image. AM-Adapter automatically transfers local appearances from the scene-level input. AM-Adapter alternatively provides controllability to map user-defined object details to specific locations in the synthesized images. Our learnable framework enhances cross-image matching within augmented self-attention by integrating semantic information from segmentation maps. To disentangle generation and matching, we adopt stage-wise training. We first train the structure-guidance and generation networks, followed by training the matching adapter while keeping the others frozen. During inference, we introduce an automated exemplar retrieval method for selecting exemplar image-segmentation pairs efficiently. Despite utilizing minimal learnable parameters, AM-Adapter achieves state-of-the-art performance, excelling in both semantic alignment and local appearance fidelity. Extensive ablations validate our design choices. Code and weights will be released.: this https URL</span></span>
@@ -350,7 +355,7 @@ footer{
   <div class="pbody">
   <div class="pt">K/DA: Automated Data Generation Pipeline for Detoxifying Implicitly Offensive Language in Korean</div>
   <div class="pa">Minkyeong Jeon*, Hyemin Jeong*, Yerang Kim, <b>Jiyoung Kim</b>, Jae Hyeon Cho, Byung-Jun Lee</div>
-  <div class="paf">Korea University &middot; Seoul National University &middot; KAIST</div>
+  <div class="paf"><span class="affchip">Korea University</span><span class="affchip">Seoul National University</span><span class="affchip">KAIST AI</span></div>
   <div class="pv"><span class="vbadge vb-acl">ACL</span><em>Association for Computational Linguistics</em>, 2025</div>
   <div class="plinks">
     <span class="abswrap"><span class="absbtn" tabindex="0">Abstract</span><span class="abspop">Language detoxification involves removing toxicity from offensive language. While a neutral-toxic paired dataset provides a straightforward approach for training detoxification models, creating such datasets presents several challenges: i) the need for human annotation to build paired data, and ii) the rapid evolution of offensive terms, rendering static datasets quickly outdated. To tackle these challenges, we introduce an automated paired data generation pipeline, called K/DA. This pipeline is designed to generate offensive language with implicit offensiveness and trend-aligned slang, making the resulting dataset suitable for detoxification model training. We demonstrate that the dataset generated by K/DA exhibits high pair consistency and greater implicit offensiveness compared to existing Korean datasets, and also demonstrates applicability to other languages. Furthermore, it enables effective training of a high-performing detoxification model with simple instruction fine-tuning.</span></span>
@@ -366,7 +371,7 @@ footer{
   <div class="pbody">
   <div class="pt">MoDiTalker: Motion-Disentangled Diffusion Model for High-Fidelity Talking Head Generation</div>
   <div class="pa">Seyeon Kim*, Siyoon Jin*, Jihye Park*, Kihong Kim, <b>Jiyoung Kim</b>, Jisu Nam, Seungryong Kim</div>
-  <div class="paf">Korea University &middot; VIVE STUDIOS</div>
+  <div class="paf"><span class="affchip">Korea University</span><span class="affchip">VIVE STUDIOS</span></div>
   <div class="pv"><span class="vbadge vb-aaai">AAAI</span><em>AAAI Conference on Artificial Intelligence</em>, 2025</div>
   <div class="plinks">
     <span class="abswrap"><span class="absbtn" tabindex="0">Abstract</span><span class="abspop">Conventional GAN-based models for talking head generation often suffer from limited quality and unstable training. Recent approaches based on diffusion models aimed to address these limitations and improve fidelity. However, they still face challenges, including extensive sampling times and difficulties in maintaining temporal consistency due to the high stochasticity of diffusion models. To overcome these challenges, we propose a novel motion-disentangled diffusion model for high-quality talking head generation, dubbed MoDiTalker. We introduce the two modules: audio-to-motion (AToM), designed to generate a synchronized lip motion from audio, and motion-to-video (MToV), designed to produce high-quality head video following the generated motion. AToM excels in capturing subtle lip movements by leveraging an audio attention mechanism. In addition, MToV enhances temporal consistency by leveraging an efficient tri-plane representation. Our experiments conducted on standard benchmarks demonstrate that our model achieves superior performance compared to existing models. We also provide comprehensive ablation studies and user study results.</span></span>
