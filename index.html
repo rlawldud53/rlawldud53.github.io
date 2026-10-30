@@ -255,6 +255,22 @@ footer{
 <ol class="pubs">
 
 <li>
+  <div class="thumb"><video autoplay loop muted playsinline preload="metadata"><source src="assets/l3gworld.mp4" type="video/mp4"></video></div>
+  <div class="pbody">
+  <div class="pt">L3G-World: Real-Time Infinite World Generation with Latent 3D Gaussian Memory</div>
+  <div class="pa">Jinhyeok Choi, JoungBin Lee, Jongmin Lee, Minkyeong Jeon, <b>Jiyoung Kim</b>, Kaeun Han, Yoonjin Yoon, Seungryong Kim</div>
+  <div class="paf"><span class="affchip">KAIST AI</span></div>
+  <div class="pv"><span class="vbadge vb-soft">arXiv</span><em>preprint</em>, 2026 <span class="badge">under review</span></div>
+  <div class="plinks">
+    <span class="abswrap"><span class="absbtn" tabindex="0">Abstract</span><span class="abspop">Interactive world models generate visual content conditioned on user actions, yet maintaining spatial consistency over long-horizon exploration in real time remains challenging. Existing approaches rely on either temporal context or explicit 3D memory, both of which scale poorly because memory grows with the length of the generated stream. Moreover, explicit 3D memories condition latent video generators by re-encoding RGB renderings, which precludes real-time generation. In this paper, we introduce a Latent 3D Gaussian Memory (L3G) that combines the efficiency of feed-forward reconstruction with a compact, rapidly renderable scene representation. Building on this memory, we propose L3G-World, in which a memory updater and a video diffusion transformer (DiT) alternate autoregressively to generate spatially consistent worlds. The memory updater spawns Gaussians in newly observed regions and refines existing ones, so that the memory grows with scene extent rather than stream length. Each Gaussian further stores a VAE latent feature, allowing the memory to be rendered directly into the DiT's latent space without VAE re-encoding. Experiments show that L3G-World achieves state-of-the-art generation quality and long-horizon spatial consistency, with up to 38.6x fewer 3D primitives, 3.2x faster memory updates, and 359x faster memory rendering relative to the most efficient prior 3D-memory baseline for each metric, enabling real-time world generation at 9 FPS.</span></span>
+    <a href="https://arxiv.org/abs/2610.40614">Paper</a>
+    <a href="https://github.com/cvlab-kaist/L3G-World">Code</a>
+    <a href="https://cvlab-kaist.github.io/L3G-World/">Project page</a>
+  </div>
+  </div>
+</li>
+
+<li>
   <div class="thumb"><video autoplay loop muted playsinline preload="metadata"><source src="assets/grace.mp4" type="video/mp4"></video></div>
   <div class="pbody">
   <div class="pt">GRACE: Generation-aware Latent Compression for Efficient Video Generation</div>
